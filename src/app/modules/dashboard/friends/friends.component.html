@@ -1,1 +1,59 @@
-<p>friends works!</p>
+<div class="container-fluid"><br />
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
+        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+            <div class="card" style="width: 100%;border-radius: 12px;">
+                <div class="card-body">
+                    <form novalidate [formGroup]="FriendForm" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 text-center"></div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
+                                <input type="text" formControlName="username" placeholder="Username" required>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
+                                <input type="email" formControlName="email" placeholder="Email" email required>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 text-center">
+                                <div style="margin-top: 7px;"></div>
+                                <button type="submit" class="button button1"
+                                    [disabled]="FriendForm.invalid">Login</button>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 text-center"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
+        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10"><br />
+            <div class="row">
+                <div *ngFor="let friend of loggedFriendsList;let i =index;"
+                    class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div id="box" class="card" style="width: 100%;border-radius: 12px;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                    <ngx-avatar name="{{friend.name}}" size="35"></ngx-avatar>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                                    <h6 style="margin-top: 4px;" class="card-title">{{friend.name}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+                                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                                    <span class="smallTextColor fontCustomSmall">Email : {{friend.email}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
+    </div>
+</div>

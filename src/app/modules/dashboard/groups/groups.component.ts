@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AppToasterService } from "../../../shared/services/app-toaster.service";
+import { AppStorageService } from "../../../shared/services/app-storage.service";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+declare var $: any;
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-groups',
@@ -7,13 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupsComponent implements OnInit {
 
-  constructor() { }
+  groupList = [];
+  flagMapping: number = 1;
+
+  constructor(private router: Router, private formBuilder: FormBuilder, private toasterService: AppToasterService, private storageService: AppStorageService) { }
 
   ngOnInit(): void {
+    this.groupList = this.storageService.getGroupDetails();
   }
 
   addGroup() {
-    
+
+  }
+
+  changeGroupDetails(flag: number) {
+    this.flagMapping = flag;
   }
 
 }

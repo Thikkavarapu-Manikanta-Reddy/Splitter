@@ -14,11 +14,40 @@
                             <span class="secondaryColor fontBoldMiniSmall">
                                 Add Group
                             </span>
+                            <div style="margin-top: 10px;"></div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <button type="button" [ngClass]="{ 'active' : flagMapping == 1 }" class="button button1"
+                                (click)="changeGroupDetails(1)">Groups that owe
+                                you</button><br />
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <button type="button" [ngClass]="{ 'active' : flagMapping == 2 }" class="button button1"
+                                (click)="changeGroupDetails(2)">Groups you
+                                owe</button><br />
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+                    </div>
+
+                    <div *ngIf="flagMapping == 1" class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                            Groups that owe you
+                        </div>
+                    </div>
+
+                    <div *ngIf="flagMapping == 2" class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                            Groups you owe
+                        </div>
+                    </div>
+
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
         </div>
     </div>
 </div>

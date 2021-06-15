@@ -23,4 +23,20 @@ export class AppStorageService {
     window.localStorage.setItem('dashboardScreenStatus', JSON.stringify(value));
   }
 
+  setGroupDetails(value: any) {
+    window.localStorage.setItem('groupDetails', JSON.stringify(value));
+  }
+
+  getGroupDetails(): any {
+    return JSON.parse(window.localStorage.getItem('groupDetails'));
+  }
+
+  setFriendsDetails(value: any) {
+    window.localStorage.setItem('friendsDetails', JSON.stringify(value));
+  }
+
+  getFriendsDetails(): any {
+    return JSON.parse(window.localStorage.getItem('friendsDetails'));
+  }
+
 }
