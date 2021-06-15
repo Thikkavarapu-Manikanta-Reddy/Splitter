@@ -1,1 +1,352 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+/* @font-face {
+  font-family: 'Metropolis';
+  src: local('Metropolis'), url(./fonts/Metropolis-Regular.woff2) format('woff2');
+} */
+body {
+    font-family: 'Poppins', sans-serif !important;
+  }
+
+.primaryColor {
+  color: #004b79;
+}
+.secondaryColor {
+  color: #0e76a8;
+}
+.dangerColor{
+  color: red;
+}
+.thirdColor {
+  color: #FFFFFF;
+}
+.smallTextColor {
+  color: #707070;
+}
+.blackColor {
+  color: black;
+}
+.whiteColor {
+  color: white;
+}
+.greenColor {
+  color: green;
+}
+.mediumTextColor {
+  color: #4D4F5C;
+}
+.primarybackgroundColor {
+  background-color: #004b79;
+}
+.secondarybackgroundColor {
+  background-color: #0e76a8;
+}
+.backgroundPageColor {
+  background-color: #FFFFFF;
+}
+.fontCommonSmallV1 {
+  font-weight: normal;
+  font-size: 90%;
+}
+.fontBoldMedium {
+  font-weight: bold;
+  font-size: 25px;
+}
+.fontBoldMoreMedium {
+  font-weight: bold;
+  font-size: 38px;
+}
+.fontBoldBig {
+  font-weight: bold;
+  font-size: 40px;
+}
+.fontBoldSmall {
+  font-weight: bold;
+  font-size: 20px;
+}
+.fontBoldMiniSmall {
+  font-weight: bold;
+  font-size: 15px;
+}
+.fontBoldVeryMiniSmall {
+  font-weight: bold;
+  font-size: 13px;
+}
+.fontRegularMedium {
+  font-weight: normal;
+  font-size: 20px;
+}
+.fontRegularSmall {
+  font-weight: normal;
+  font-size: 17px;
+}
+.fontAvgerageBold
+{
+  font-weight: bold;
+  font-size: 17px;
+}
+.fontRegularVSmall {
+  font-weight: normal;
+  font-size: 15px;
+}
+.fontCommonSmallV1 {
+  font-weight: normal;
+  font-size: 90%;
+}
+.fontRegularMiniSmall {
+  font-weight: normal;
+  font-size: 13px;
+}
+.fontSemiBoldSmall {
+  font-weight: 600;
+  font-size: 20px;
+}
+.fontCustomSmall {
+  font-weight: 500;
+  font-size: 15px;
+}
+.enableButtonPrimaryColors {
+  background-color: #004b79;
+  color: #FFFFFF
+}
+.enableButtonPrimaryColors:hover {
+  background-color: #004b79;
+  color: #FFFFFF
+}
+.enableButtonSecondaryColors {
+  background-color: #0e76a8;
+  color: #FFFFFF
+}
+.enableButtonSecondaryColors:hover {
+  background-color: #0e76a8;
+  color: #FFFFFF
+}
+.floatRight {
+  float: right;
+}
+.floatLeft {
+  float: left;
+}
+.oulinedButtonSecondaryColors {
+  color: #0e76a8;
+  background-color: #FFFFFF;
+  border: 1px solid #0e76a8;
+}
+.oulinedButtonSecondaryColors:hover {
+  color: #0e76a8;
+  background-color: #FFFFFF;
+  border: 1px solid #0e76a8;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #0e76a8;
+}
+
+i.commonFaFaFeatures {
+  font-size: 25px;
+  cursor: pointer;
+}
+i.commonSmallFaFaFeatures {
+  font-size: 20px;
+  cursor: pointer;
+}
+.button {
+  background-color: white; /* Green */
+  border: none;
+  color: black;
+  padding: 2%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 90%;
+  cursor: pointer;
+  border-radius: 5px;
+  width:100%;
+}
+.buttonRed {
+  background-color: red; /* Green */
+  border: none;
+  color: white;
+  padding: 2%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 90%;
+  cursor: pointer;
+  border-radius: 5px;
+  width:100%;
+}
+.buttonRoundGreen{
+  border-radius: 60px 60px 60px 60px;
+  color:#3CB371;
+}
+.buttonGreen {
+  background-color: green; /* Green */
+  border: none;
+  color: white;
+  padding: 2%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 90%;
+  cursor: pointer;
+  border-radius: 5px;
+  width:100%;
+}
+.buttonLightGreen {
+  background-color: #39A868; /* seaGreen */
+  border: none;
+  color: #235E36;
+  padding: 2%;
+  //text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 100%;
+  cursor: pointer;
+  border-radius: 60px 60px 60px 60px;
+  //border-radius: 5px;
+  width:100%;
+}
+.button2:disabled {
+  cursor:not-allowed;
+}
+.button1 {
+  color:black;
+  background-color: white; 
+  border: 2px solid #A4A4A4;
+}
+.button1:disabled {
+cursor:not-allowed;
+}
+.btn-primary:disabled {
+cursor:not-allowed;
+}
+.button1:hover {
+  color:white;
+  background-color: #0e76a8; 
+}
+
+.consignmentTable {
+  table-layout:fixed;
+}
+
+.consignmentTable td, .consignmentTable th {
+  border: 1px solid #ddd;
+  font-size:70%;
+  width: 80px;
+  padding: 0.2rem;
+}
+
+.consignmentTable td {
+  cursor: pointer;
+  word-break: break-all;
+}
+
+.consignmentTable tr:nth-child(even){background-color: #f2f2f2;}
+
+.consignmentTable tr:hover {background-color: #ddd;}
+
+.consignmentTable th {
+  background-color:#0e76a8;
+  color: white;
+}
+.table-responsive::-webkit-scrollbar {
+  display: none;
+}
+.hoverTransition {
+  transition: 0.3s;
+  cursor: pointer;
+  background-color: #F5F8FC;
+  color: #004b79;
+  border-radius: 50%;
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  animation: morphing 6s infinite;
+}
+.hoverTransition:hover {
+  transform: translate(0, -10px);
+}
+@keyframes morphing {
+  0% {
+    border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
+  }
+  25% {
+    border-radius: 58% 42% 75% 25%/76% 46% 54% 24%;
+  }
+  50% {
+    border-radius: 50% 50% 33% 67%/55% 27% 73% 45%;
+  }
+  75% {
+    border-radius: 33% 67% 58% 42%/63% 68% 32% 37%;
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 800px)
+{
+.mobileCardCenterView {
+  text-align: center;
+}
+.floatRight {
+  float: none;
+}
+}
+#box:hover {
+  box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.1), 0 16px 30px 0 rgba(0, 0, 0, 0.03), 0 6px 16px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.5s ease;
+  border: 1px solid transparent;
+}
+
+#box {
+  border: 1px solid #e8ecf1;
+  /* padding: 30px; */
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+
+.consignmentTable1 td, .consignmentTable1 th {
+  border: 1px solid #ddd;
+  font-size:70%;
+  width: 80px;
+}
+
+.consignmentTable1 td {
+  cursor: pointer;
+}
+
+.consignmentTable1 tr:nth-child(even){background-color: #f2f2f2;}
+
+.consignmentTable1 tr:hover {background-color: #ddd;}
+
+.consignmentTable1 th {
+  background-color:#0e76a8;
+  color: white;
+}
+
+
+
+
+  @media only screen and (max-width: 800px) 
+{
+img.block{
+/*display:none;*/
+width:54%;
+height:14%;
+}
+}
+@media only screen and (min-width: 801px) 
+{
+    img.block {
+        width:15%;
+        height:15%;
+        }
+}
+.block{
+    cursor:pointer;
+}
+.navbar {
+    background-color: aliceblue;
+}

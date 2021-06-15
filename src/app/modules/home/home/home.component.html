@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-md navbar-light">
+    <h3 style="font-weight: 600;" class="primaryColor block">
+        <span>Spli</span><span class="smallTextColor">tter</span>
+    </h3>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a style="cursor: pointer;" class="smallTextColor button2">Login</a>
+            </li><br />
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid"><br />
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 text-center">
+            <form novalidate [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+                <input type="text" formControlName="username" placeholder="Username" required><br /><br />
+                <button type="submit" class="button button1" [disabled]="LoginForm.invalid">Login</button><br />
+            </form>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+        </div>
+    </div>
+</div>
