@@ -20,10 +20,12 @@
     "@angular/platform-browser-dynamic": "~11.2.7",
     "@angular/router": "~11.2.7",
     "@ng-select/ng-select": "^7.0.0",
+    "angular-typing-animation": "^0.5.4",
     "bootstrap": "^5.0.1",
     "ngx-avatar": "^4.1.0",
     "ngx-toastr": "^14.0.0",
     "rxjs": "~6.6.0",
+    "rxjs-compat": "^6.6.7",
     "sweetalert2": "^11.0.17",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
