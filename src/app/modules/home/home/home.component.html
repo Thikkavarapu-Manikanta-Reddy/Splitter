@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-light">
-    <h3 style="font-weight: 600;" class="primaryColor block">
-        <span>Spli</span><span class="smallTextColor">tter</span>
+    <h3 style="font-weight: 500;" class="primaryColor block">
+        <span style="color: white;">
+            <i style="font-size: 20px;" class="fas fa-divide commonSmallFaFaFeatures" aria-hidden="true"></i>
+            Splitter</span>
     </h3>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -8,24 +10,75 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a style="cursor: pointer;" class="smallTextColor button2">Login</a>
-            </li><br />
+                <a style="cursor: pointer;color: white;" class="smallTextColor button2" (click)="login()">
+                    <i class="fas fa-sign-in-alt commonFaFaFeatures" style="color: white;font-size: 20px;"
+                        aria-hidden="true"></i>&nbsp;&nbsp;Login</a>
+            </li>
         </ul>
     </div>
 </nav>
 
-<div class="container-fluid"><br />
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+<!--Login Modal-->
+<div class="modal fade" id="myLoginModal">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                                <span class="secondaryColor fontBoldSmall">
+                                    <i class="fas fa-sign-in-alt commonFaFaFeatures" style="font-size: 20px;" aria-hidden="true"></i>&nbsp;&nbsp;
+                                    Login
+                                </span>
+                            </div>
+                        </div>
+
+                        <hr style="width: 80%;">
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 text-center">
+                                        <form novalidate [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+                                            <input type="text" formControlName="userName" placeholder="Username"
+                                                required><br /><br />
+                                            <input type="email" formControlName="email" placeholder="Email" email
+                                                required><br /><br />
+                                            <button type="submit" class="button button1"
+                                                [disabled]="LoginForm.invalid">Login</button><br />
+                                        </form>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr style="width: 80%;">
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                                <button type="button" class="btn btn-secondary secondarybackgroundColor"
+                                    data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 text-center">
-            <form novalidate [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
-                <input type="text" formControlName="userName" placeholder="Username" required><br /><br />
-                <input type="email" formControlName="email" placeholder="Email" email required><br /><br />
-                <button type="submit" class="button button1" [disabled]="LoginForm.invalid">Login</button><br />
-            </form>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-        </div>
+
+        <!-- Modal footer -->
+
     </div>
 </div>
+<!---->

@@ -35,30 +35,36 @@ export class FriendsComponent implements OnInit {
   }
 
   onSubmit() {
-    let friendsData = {
-      "name": this.FriendForm.value.userName,
-      "email": this.FriendForm.value.email,
-      "amount": 0,
-      "percentage": 0
-    };
 
-    if (this.friendsList == null) {
-      this.friendsList = {};
-      this.friendsList[this.userData.email] = [];
+    if (this.FriendForm.value.email == this.userData.email) {
+      this.toasterService.showError("You can't assign your emailId to your friends !!");
     }
-    if (this.friendsList[this.userData.email] == undefined) {
-      this.friendsList[this.userData.email] = [];
+    else {
+      let friendsData = {
+        "name": this.FriendForm.value.userName,
+        "email": this.FriendForm.value.email,
+        "amount": 0,
+        "percentage": 0
+      };
+
+      if (this.friendsList == null) {
+        this.friendsList = {};
+        this.friendsList[this.userData.email] = [];
+      }
+      if (this.friendsList[this.userData.email] == undefined) {
+        this.friendsList[this.userData.email] = [];
+      }
+      this.friendsList[this.userData.email].push(friendsData);
+
+      this.storageService.setFriendsDetails(this.friendsList);
+      // this.friendsList = this.storageService.getFriendsDetails();
+      this.loggedFriendsList = this.friendsList[this.userData.email];
+
+      this.FriendForm.patchValue({
+        userName: null,
+        email: null
+      });
     }
-    this.friendsList[this.userData.email].push(friendsData);
-
-    this.storageService.setFriendsDetails(this.friendsList);
-    // this.friendsList = this.storageService.getFriendsDetails();
-    this.loggedFriendsList = this.friendsList[this.userData.email];
-
-    this.FriendForm.patchValue({
-      userName: null,
-      email: null
-    });
 
   }
 

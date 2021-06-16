@@ -7,6 +7,11 @@ export class AppStorageService {
 
   constructor() { }
 
+  clear() {
+    window.localStorage.removeItem('userDetail');
+    window.localStorage.removeItem('dashboardScreenStatus');
+  }
+
   setUserDetail(value: any) {
     window.localStorage.setItem('userDetail', JSON.stringify(value));
   }

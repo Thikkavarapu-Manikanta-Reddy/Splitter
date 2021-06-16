@@ -36,8 +36,16 @@ export class HomeComponent implements OnInit {
       "percentage": 0
     }
 
+    $('#myLoginModal').modal('hide');
+
     this.storageService.setUserDetail(obj);
     this.router.navigate(['dashboard']);
+  }
+
+  login() {
+    $('#myLoginModal').modal({
+      show: true
+    });
   }
 
 }

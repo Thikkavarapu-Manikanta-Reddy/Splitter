@@ -18,6 +18,7 @@ export class GroupsComponent implements OnInit {
   userData: any;
   createdGroups = 0;
   owedGroups = 0;
+  totalOwedAmtAcrossAllGrps = 0;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private toasterService: AppToasterService, private storageService: AppStorageService) { }
 
@@ -36,6 +37,7 @@ export class GroupsComponent implements OnInit {
         }
         if (Object.keys(this.loggedGroupDetailsList[i].owedGroups).length != 0) {
           this.owedGroups = 1;
+          this.totalOwedAmtAcrossAllGrps += this.loggedGroupDetailsList[i].owedGroups.owedFriend.amount;
         }
       }
       console.log(this.createdGroups, this.owedGroups);

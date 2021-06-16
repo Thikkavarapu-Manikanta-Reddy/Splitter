@@ -54,7 +54,8 @@
                                         </ngx-avatar>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                        <h6 style="margin-top: 4px;" class="card-title">
+                                        <h6 style="margin-top: 4px;"
+                                            class="secondaryColor fontBoldMiniSmall card-title">
                                             {{loggedGroupDetails.createdGroups.groupName}}</h6>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
@@ -90,7 +91,7 @@
                 </ng-container>
             </div>
 
-            <div *ngIf="loggedGroupDetailsList.length == 0" class="row">
+            <div *ngIf="createdGroups == 0" class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                     <span class="smallTextColor fontRegularSmall">No groups available that owe you !!</span>
                 </div>
@@ -102,6 +103,18 @@
     <div *ngIf="flagMapping == 2" class="row">
         <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
         <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10"><br />
+
+            <div *ngIf="owedGroups == 1" class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                    <span class="smallTextColor fontBoldMiniSmall">Total amount you owe across all the groups :
+                        <span class="secondaryColor fontBoldMiniSmall"><i style="font-size: 12px;"
+                                class="fa fa-rupee commonSmallFaFaFeatures" aria-hidden="true"></i>
+                            {{totalOwedAmtAcrossAllGrps}}</span>
+                    </span>
+                    <div style="margin-top: 10px;"></div>
+                </div>
+            </div>
+
             <div *ngIf="loggedGroupDetailsList.length > 0" class="row">
                 <ng-container *ngFor="let loggedGroupDetails of loggedGroupDetailsList;let i =index;">
                     <div *ngIf="(loggedGroupDetails.owedGroups | keyvalue)?.length"
@@ -114,7 +127,8 @@
                                         </ngx-avatar>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                        <h6 style="margin-top: 4px;" class="card-title">
+                                        <h6 style="margin-top: 4px;"
+                                            class="secondaryColor fontBoldMiniSmall card-title">
                                             {{loggedGroupDetails.owedGroups.groupName}}</h6>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
@@ -139,7 +153,7 @@
                 </ng-container>
             </div>
 
-            <div *ngIf="loggedGroupDetailsList.length == 0" class="row">
+            <div *ngIf="owedGroups == 0" class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                     <span class="smallTextColor fontRegularSmall">No groups available for you to owe !!</span>
                 </div>

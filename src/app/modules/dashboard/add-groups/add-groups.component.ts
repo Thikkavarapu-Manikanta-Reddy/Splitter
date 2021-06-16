@@ -92,7 +92,7 @@ export class AddGroupsComponent implements OnInit {
       friend.amount = 0;
     }
     else
-      friend.amount = (event.target.value / 100) * this.addGroupsForm.value.expense;
+      friend.amount = parseFloat(((event.target.value / 100) * this.addGroupsForm.value.expense).toFixed(2));
   }
 
   onSubmit() {
