@@ -42,8 +42,11 @@ export class FriendsComponent implements OnInit {
       "percentage": 0
     };
 
-    if (this.friendsList == null || this.friendsList[this.userData] == undefined) {
+    if (this.friendsList == null) {
       this.friendsList = {};
+      this.friendsList[this.userData] = [];
+    }
+    if (this.friendsList[this.userData] == undefined) {
       this.friendsList[this.userData] = [];
     }
     this.friendsList[this.userData].push(friendsData);
