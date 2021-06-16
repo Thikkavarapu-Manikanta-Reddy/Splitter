@@ -8,7 +8,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 text-center"></div>
                             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
-                                <input type="text" formControlName="username" placeholder="Username" required>
+                                <input type="text" formControlName="userName" placeholder="Username" required>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
                                 <input type="email" formControlName="email" placeholder="Email" email required>
@@ -30,7 +30,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
         <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10"><br />
-            <div class="row">
+            <div *ngIf="loggedFriendsList.length > 0" class="row">
                 <div *ngFor="let friend of loggedFriendsList;let i =index;"
                     class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div id="box" class="card" style="width: 100%;border-radius: 12px;">
@@ -51,6 +51,12 @@
                             </div>
                         </div>
                     </div><br />
+                </div>
+            </div>
+
+            <div *ngIf="loggedFriendsList.length == 0" class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                    <span class="smallTextColor fontRegularSmall">No Friends Available !!</span>
                 </div>
             </div>
         </div>

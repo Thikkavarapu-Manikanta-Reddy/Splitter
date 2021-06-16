@@ -17,17 +17,21 @@ export class AddGroupsComponent implements OnInit {
   addGroupsForm: FormGroup;
   userData: any;
   selectedFriends = [];
+  modifiedSelectedFriends = [];
   flagMapping: number = -1;
+  groupDetails = {};
 
   constructor(private router: Router, private formBuilder: FormBuilder, private toasterService: AppToasterService, private storageService: AppStorageService) { }
 
   ngOnInit(): void {
     this.userData = this.storageService.getUserDetail();
     this.friendsList = this.storageService.getFriendsDetails();
+    this.groupDetails = this.storageService.getGroupDetails();
     if (this.friendsList != null) {
-      this.loggedFriendsList = this.friendsList[this.userData];
+      this.loggedFriendsList = this.friendsList[this.userData.email];
     }
     this.createform();
+    console.log(this.friendsList, this.groupDetails);
   }
 
   createform() {
@@ -55,21 +59,27 @@ export class AddGroupsComponent implements OnInit {
   resetFlagMapping() {
     if (this.selectedFriends.length == 0) {
       this.flagMapping = -1;
+      this.modifiedSelectedFriends = [];
     }
+    this.modifiedSelectedFriends = JSON.parse(JSON.stringify(this.selectedFriends));
+    this.modifiedSelectedFriends.push(this.userData);
     this.calculateAmountSplitting();
   }
 
   calculateAmountSplitting() {
     if (this.flagMapping == 1) {
-      for (let i = 0; i < this.selectedFriends.length; i++) {
-        this.selectedFriends[i].amount = parseFloat((this.addGroupsForm.value.expense / this.selectedFriends.length).toFixed(2));
+      for (let i = 0; i < this.modifiedSelectedFriends.length; i++) {
+        this.modifiedSelectedFriends[i].amount = parseFloat((this.addGroupsForm.value.expense / this.modifiedSelectedFriends.length).toFixed(2));
       }
     }
     else if (this.flagMapping == 2) {
-      for (let i = 0; i < this.selectedFriends.length; i++) {
-        if (this.selectedFriends[i].percentage == 0) {
-          this.selectedFriends[i].amount = 0;
-          this.selectedFriends[i].percentage = 0;
+      for (let i = 0; i < this.modifiedSelectedFriends.length; i++) {
+        if (this.modifiedSelectedFriends[i].percentage == 0) {
+          this.modifiedSelectedFriends[i].amount = 0;
+          this.modifiedSelectedFriends[i].percentage = 0;
+        }
+        else {
+          this.modifiedSelectedFriends[i].amount = (this.modifiedSelectedFriends[i].percentage / 100) * this.addGroupsForm.value.expense;
         }
       }
     }
@@ -90,15 +100,15 @@ export class AddGroupsComponent implements OnInit {
     let proceed = 1, percentageSum = 0, error = 1;
 
     if (this.flagMapping == 2) {
-      for (let i = 0; i < this.selectedFriends.length; i++) {
-        if (this.selectedFriends[i].percentage == 0) {
+      for (let i = 0; i < this.modifiedSelectedFriends.length; i++) {
+        if (this.modifiedSelectedFriends[i].percentage == 0 || this.modifiedSelectedFriends[i].percentage == null) {
           proceed = 0;
           error = 1;
           break;
         }
         else {
-          percentageSum += this.selectedFriends[i].percentage;
-          if (i == this.selectedFriends.length - 1 && percentageSum != 100) {
+          percentageSum += this.modifiedSelectedFriends[i].percentage;
+          if (i == this.modifiedSelectedFriends.length - 1 && percentageSum != 100) {
             proceed = 0;
             error = 2;
             break;
@@ -116,7 +126,84 @@ export class AddGroupsComponent implements OnInit {
       }
     }
     else {
-      console.log("Proceed", this.selectedFriends, this.addGroupsForm.value);
+      console.log("Proceed", this.modifiedSelectedFriends, this.addGroupsForm.value);
+
+      let createdGroupFriendsArray = [], yourShare = 0;
+
+      for (let i = 0; i < this.modifiedSelectedFriends.length; i++) {
+        if (this.modifiedSelectedFriends[i].email != this.userData.email) {
+          createdGroupFriendsArray.push(this.modifiedSelectedFriends[i]);
+        }
+        else {
+          yourShare = this.modifiedSelectedFriends[i].amount;
+        }
+      }
+
+      let groupData = {
+        "createdGroups": {},
+        "owedGroups": {}
+      };
+
+      groupData.createdGroups = {
+        "groupName": this.addGroupsForm.value.groupName,
+        "expense": this.addGroupsForm.value.expense,
+        "yourShare": yourShare,
+        "splitEqually": this.flagMapping == 1 ? true : false,
+        "friends": createdGroupFriendsArray
+      };
+
+      if (this.groupDetails == null) {
+        this.groupDetails = {};
+        this.groupDetails[this.userData.email] = [];
+      }
+      if (this.groupDetails[this.userData.email] == undefined) {
+        this.groupDetails[this.userData.email] = [];
+      }
+
+      let createGroupProceed = 1;
+
+      if (this.groupDetails[this.userData.email].length > 0) {
+        for (let i = 0; i < this.groupDetails[this.userData.email].length; i++) {
+          if (this.groupDetails[this.userData.email][i].createdGroups.groupName == this.addGroupsForm.value.groupName) {
+            createGroupProceed = 0;
+            break;
+          }
+        }
+      }
+
+      if (createGroupProceed == 1) {
+        this.groupDetails[this.userData.email].push(groupData);
+        for (let i = 0; i < this.modifiedSelectedFriends.length; i++) {
+          if (this.modifiedSelectedFriends[i].email != this.userData.email) {
+            let groupData = {
+              "createdGroups": {},
+              "owedGroups": {}
+            };
+            groupData.owedGroups = {
+              "groupName": this.addGroupsForm.value.groupName,
+              "expense": this.addGroupsForm.value.expense,
+              "owedExpense": this.modifiedSelectedFriends[i].amount,
+              "splitEqually": this.flagMapping == 1 ? true : false,
+              "owedFriend": this.userData
+            };
+            if (this.groupDetails[this.modifiedSelectedFriends[i].email] == undefined) {
+              this.groupDetails[this.modifiedSelectedFriends[i].email] = [];
+            }
+            this.groupDetails[this.modifiedSelectedFriends[i].email].push(groupData);
+          }
+        }
+        console.log(this.groupDetails);
+
+        this.storageService.setGroupDetails(this.groupDetails);
+
+        this.storageService.setDashboardScreenStatus('GR');
+        this.router.navigate(['dashboard/groups']);
+
+      }
+      else {
+        this.toasterService.showError("This group already exists !!");
+      }
+
     }
 
   }

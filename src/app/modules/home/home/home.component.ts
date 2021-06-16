@@ -22,12 +22,21 @@ export class HomeComponent implements OnInit {
 
   createform() {
     this.LoginForm = this.formBuilder.group({
-      username: ['', [Validators.required]]
+      userName: ['', [Validators.required]],
+      email: ['', [Validators.required]]
     });
   }
 
   onSubmit() {
-    this.storageService.setUserDetail(this.LoginForm.value.username);
+
+    let obj = {
+      "name": this.LoginForm.value.userName,
+      "email": this.LoginForm.value.email,
+      "amount": 0,
+      "percentage": 0
+    }
+
+    this.storageService.setUserDetail(obj);
     this.router.navigate(['dashboard']);
   }
 

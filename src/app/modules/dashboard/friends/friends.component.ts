@@ -21,22 +21,22 @@ export class FriendsComponent implements OnInit {
   ngOnInit(): void {
     this.userData = this.storageService.getUserDetail();
     this.friendsList = this.storageService.getFriendsDetails();
-    if (this.friendsList != null) {
-      this.loggedFriendsList = this.friendsList[this.userData];
+    if (this.friendsList != null && this.friendsList[this.userData.email] != undefined) {
+      this.loggedFriendsList = this.friendsList[this.userData.email];
     }
     this.createform();
   }
 
   createform() {
     this.FriendForm = this.formBuilder.group({
-      username: ['', [Validators.required]],
+      userName: ['', [Validators.required]],
       email: ['', [Validators.required]]
     });
   }
 
   onSubmit() {
     let friendsData = {
-      "name": this.FriendForm.value.username,
+      "name": this.FriendForm.value.userName,
       "email": this.FriendForm.value.email,
       "amount": 0,
       "percentage": 0
@@ -44,19 +44,19 @@ export class FriendsComponent implements OnInit {
 
     if (this.friendsList == null) {
       this.friendsList = {};
-      this.friendsList[this.userData] = [];
+      this.friendsList[this.userData.email] = [];
     }
-    if (this.friendsList[this.userData] == undefined) {
-      this.friendsList[this.userData] = [];
+    if (this.friendsList[this.userData.email] == undefined) {
+      this.friendsList[this.userData.email] = [];
     }
-    this.friendsList[this.userData].push(friendsData);
+    this.friendsList[this.userData.email].push(friendsData);
 
     this.storageService.setFriendsDetails(this.friendsList);
     // this.friendsList = this.storageService.getFriendsDetails();
-    this.loggedFriendsList = this.friendsList[this.userData];
+    this.loggedFriendsList = this.friendsList[this.userData.email];
 
     this.FriendForm.patchValue({
-      username: null,
+      userName: null,
       email: null
     });
 

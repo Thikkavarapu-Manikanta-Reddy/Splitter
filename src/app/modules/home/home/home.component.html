@@ -20,7 +20,8 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 text-center">
             <form novalidate [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
-                <input type="text" formControlName="username" placeholder="Username" required><br /><br />
+                <input type="text" formControlName="userName" placeholder="Username" required><br /><br />
+                <input type="email" formControlName="email" placeholder="Email" email required><br /><br />
                 <button type="submit" class="button button1" [disabled]="LoginForm.invalid">Login</button><br />
             </form>
         </div>

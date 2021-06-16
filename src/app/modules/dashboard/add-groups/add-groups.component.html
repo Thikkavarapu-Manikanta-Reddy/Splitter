@@ -62,7 +62,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let friend of selectedFriends;let i = index">
+                                        <tr *ngFor="let friend of modifiedSelectedFriends;let i = index">
                                             <td>{{friend.name}}</td>
                                             <td>{{friend.amount}}</td>
                                             <td *ngIf="flagMapping == 2">
