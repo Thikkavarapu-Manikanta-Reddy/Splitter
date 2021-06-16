@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  userData:any;
+  userData: any;
   flagMapping: string;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private toasterService: AppToasterService, private storageService: AppStorageService) { }
@@ -28,6 +28,9 @@ export class DashboardComponent implements OnInit {
 
     if (this.flagMapping == 'GR') {
       this.router.navigate(['dashboard/groups']);
+    }
+    else if (this.flagMapping == 'AGR') {
+      this.router.navigate(['dashboard/add-groups']);
     }
     else {
       this.router.navigate(['dashboard/friends']);

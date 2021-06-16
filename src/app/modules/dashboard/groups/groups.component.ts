@@ -22,7 +22,8 @@ export class GroupsComponent implements OnInit {
   }
 
   addGroup() {
-
+    this.storageService.setDashboardScreenStatus('AGR');
+    this.router.navigate(['dashboard/add-groups']);
   }
 
   changeGroupDetails(flag: number) {

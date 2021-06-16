@@ -1,0 +1,34 @@
+.active {
+    color:white;
+    background-color: #0e76a8; 
+}
+
+#groupTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#groupTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 80%;
+}
+
+#groupTable th {
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #0e76a8;
+    color: white;
+    border: 1px solid #ddd;
+    font-size: 80%;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 1000px) {
+    #groupTable td {
+        font-size: 60%;
+    }
+    #groupTable th {
+        font-size: 60%;
+    }
+}

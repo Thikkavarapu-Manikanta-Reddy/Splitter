@@ -1,0 +1,95 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"></div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"><br />
+            <div class="card" style="width: 100%;border-radius: 12px;">
+                <div class="card-body">
+                    <h5 class="secondaryColor fontBoldSmall" style="text-align: center;"><i
+                            class="fa fa-graduation-cap"></i>&nbsp;&nbsp;Add Group</h5><br />
+
+                    <form novalidate [formGroup]="addGroupsForm" (ngSubmit)="onSubmit()">
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <input type="text" formControlName="groupName" placeholder="Group Name" required>
+                                <br />
+                                <div style="margin-top: 25px;"></div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <input type="number" formControlName="expense" placeholder="Expense" required>
+                                <br />
+                                <div style="margin-top: 25px;"></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <ng-select (change)="resetFlagMapping()" [items]="loggedFriendsList" [multiple]="true"
+                                    bindLabel="name" placeholder="Select Friends" [(ngModel)]="selectedFriends"
+                                    [ngModelOptions]="{standalone: true}">
+                                </ng-select>
+                                <br />
+                                <div style="margin-top: 10px;"></div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <button type="button" [ngClass]="{ 'active' : flagMapping == 1 }" class="button button1"
+                                    (click)="changeSplitDetails(1)">Split Equally</button><br />
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <button type="button" [ngClass]="{ 'active' : flagMapping == 2 }" class="button button1"
+                                    (click)="changeSplitDetails(2)">Split By Percentage</button><br />
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+                        </div>
+
+                        <div *ngIf="selectedFriends.length != 0 && flagMapping != -1" class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+                            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 text-center">
+                                <div style="margin-top: 25px;"></div>
+                                <table id="groupTable" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Amount ( <i style="font-size: 12px;"
+                                                    class="fa fa-rupee commonSmallFaFaFeatures" aria-hidden="true"></i>
+                                                )</th>
+                                            <th *ngIf="flagMapping == 2">Percentage ( % )</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let friend of selectedFriends;let i = index">
+                                            <td>{{friend.name}}</td>
+                                            <td>{{friend.amount}}</td>
+                                            <td *ngIf="flagMapping == 2">
+                                                <input (keyup)="changeAmountByPercentage($event,friend)" type="number"
+                                                    [(ngModel)]="friend.percentage"
+                                                    [ngModelOptions]="{standalone: true}">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                                <div style="margin-top: 20px;"></div>
+                                <button type="submit" class="button button1" style="width: 20%"
+                                    [disabled]="addGroupsForm.invalid || selectedFriends.length == 0 || flagMapping == -1">Add
+                                    Group</button><br />
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div><br />
+        </div>
+    </div>
+</div>

@@ -37,11 +37,15 @@ export class FriendsComponent implements OnInit {
   onSubmit() {
     let friendsData = {
       "name": this.FriendForm.value.username,
-      "email": this.FriendForm.value.email
+      "email": this.FriendForm.value.email,
+      "amount": 0,
+      "percentage": 0
     };
 
-    if (this.friendsList == null || this.friendsList[this.userData] == undefined)
+    if (this.friendsList == null || this.friendsList[this.userData] == undefined) {
+      this.friendsList = {};
       this.friendsList[this.userData] = [];
+    }
     this.friendsList[this.userData].push(friendsData);
 
     this.storageService.setFriendsDetails(this.friendsList);

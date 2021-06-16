@@ -5,12 +5,14 @@ import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { GroupsComponent } from './groups/groups.component';
 import { FriendsComponent } from './friends/friends.component';
+import { AddGroupsComponent } from './add-groups/add-groups.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     GroupsComponent,
-    FriendsComponent
+    FriendsComponent,
+    AddGroupsComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,10 @@ import { FriendsComponent } from './friends/friends.component';
           {
             path: 'groups',
             component: GroupsComponent
+          },
+          {
+            path: 'add-groups',
+            component: AddGroupsComponent
           },
           {
             path: 'friends',
