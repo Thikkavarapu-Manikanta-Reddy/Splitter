@@ -1,3 +1,98 @@
 .secondarybackgroundColor:hover {
     background-color: #0e76a8;
 }
+.downloadButton {
+    background-color: white; /* Green */
+    border: none;
+    color: black;
+    padding: 2%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 13px;
+    width:30%;
+}
+.button3 {
+    color:#004b79;
+    background-color: white; 
+    border: 2px solid white;
+    border-color: #0e76a8;
+}
+div.jumboSize
+{
+//   border-radius: 53px;
+    width: 100%;
+  padding: 30px;
+   border-color: grey;
+   background-color: #F7F7F7;
+}
+.jumboScreen {
+    padding: 20px;
+}
+
+.navbar-light .navbar-toggler {
+    border-color: white;
+}
+
+.hoverTransition {
+    transition: 0.3s;
+    cursor: pointer;
+    background-color: #F5F8FC;
+    color: #004b79;
+    border-radius: 50%;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    animation: morphing 6s infinite;
+}
+.hoverTransition:hover {
+    transform: translate(0, -10px);
+}
+@keyframes morphing {
+    0% {
+      border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
+    }
+    25% {
+      border-radius: 58% 42% 75% 25%/76% 46% 54% 24%;
+    }
+    50% {
+      border-radius: 50% 50% 33% 67%/55% 27% 73% 45%;
+    }
+    75% {
+      border-radius: 33% 67% 58% 42%/63% 68% 32% 37%;
+    }
+  }
+
+@media only screen and (max-width: 800px) 
+{
+div.jumboSize {
+    margin:  0px 0px 0px 0px;
+}
+.sideImages {
+    width: 80%;
+    height: 80%;
+}
+.imageCenter {
+    margin-left: 22px;
+}
+.breakDivDisplayNoShow {
+    display: none;
+}
+.breakDivDisplayShow {
+    display: inline;
+}
+}
+@media only screen and (min-width: 801px) 
+{
+    div.jumboSize {
+        margin:  40px 40px 40px 40px;
+    }
+    .imageCenter {
+        margin-left: 0px;
+    }
+    .sideImages {
+        width: 69%;
+        height: 69%;
+    }
+}

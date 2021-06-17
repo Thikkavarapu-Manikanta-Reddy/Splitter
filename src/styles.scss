@@ -6,9 +6,9 @@
   font-family: 'Metropolis';
   src: local('Metropolis'), url(./fonts/Metropolis-Regular.woff2) format('woff2');
 } */
-body {
-    font-family: 'Poppins', sans-serif !important;
-  }
+
+html, body { height: 100%; overflow-x: hidden; }
+body { margin: 0; font-family: 'Poppins', sans-serif !important; }
 
 .primaryColor {
   color: #004b79;
