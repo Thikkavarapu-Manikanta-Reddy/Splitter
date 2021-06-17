@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppToasterService } from "../app/shared/services/app-toaster.service";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -6,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'splitter';
+
+  constructor(private toasterService: AppToasterService) { }
+
+  ngOnInit() {
+  }
 }
