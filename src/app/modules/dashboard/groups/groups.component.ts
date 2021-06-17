@@ -82,7 +82,6 @@ export class GroupsComponent implements OnInit {
     let newObj = {};
 
     for (let key in obj2) {
-      console.log(key, ":", obj2[key]);
 
       if (obj1[key] > obj2[key]) {
         newObj[key] = {
@@ -104,6 +103,7 @@ export class GroupsComponent implements OnInit {
 
     this.owedUsersTotalExpense = newObj;
     console.log(this.owedUsersTotalExpense);
+    this.storageService.setFriendsAmtMapping(this.owedUsersTotalExpense);
   }
 
   addGroup() {

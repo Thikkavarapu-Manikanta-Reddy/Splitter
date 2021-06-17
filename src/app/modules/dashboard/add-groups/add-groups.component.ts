@@ -86,7 +86,7 @@ export class AddGroupsComponent implements OnInit {
   }
 
   changeAmountByPercentage(event: any, friend) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     if (event.target.value < 0) {
       friend.percentage = 0;
       friend.amount = 0;

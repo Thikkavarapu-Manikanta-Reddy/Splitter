@@ -23,6 +23,9 @@
     border: 1px solid #ddd;
     font-size: 80%;
 }
+.submitButton {
+    width: 20%;
+}
 
 @media only screen and (min-width: 0px) and (max-width: 1000px) {
     #groupTable td {
@@ -31,4 +34,8 @@
     #groupTable th {
         font-size: 60%;
     }
+    .submitButton {
+        width: 50%;
+    }
+    
 }

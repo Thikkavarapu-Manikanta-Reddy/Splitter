@@ -10,6 +10,7 @@ export class AppStorageService {
   clear() {
     window.localStorage.removeItem('userDetail');
     window.localStorage.removeItem('dashboardScreenStatus');
+    window.localStorage.removeItem('friendsAmtMapping');
   }
 
   setUserDetail(value: any) {
@@ -42,6 +43,14 @@ export class AppStorageService {
 
   getFriendsDetails(): any {
     return JSON.parse(window.localStorage.getItem('friendsDetails'));
+  }
+
+  setFriendsAmtMapping(value: any) {
+    window.localStorage.setItem('friendsAmtMapping', JSON.stringify(value));
+  }
+
+  getFriendsAmtMapping(): any {
+    return JSON.parse(window.localStorage.getItem('friendsAmtMapping'));
   }
 
 }

@@ -38,11 +38,11 @@
                             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
                             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <button type="button" [ngClass]="{ 'active' : flagMapping == 1 }" class="button button1"
-                                    (click)="changeSplitDetails(1)">Split Equally</button><br />
+                                    (click)="changeSplitDetails(1)">Split Equally</button><br /><br />
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <button type="button" [ngClass]="{ 'active' : flagMapping == 2 }" class="button button1"
-                                    (click)="changeSplitDetails(2)">Split By Percentage</button><br />
+                                    (click)="changeSplitDetails(2)">Split By Percentage</button><br /><br />
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
                         </div>
@@ -79,8 +79,8 @@
 
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                                <div style="margin-top: 20px;"></div>
-                                <button type="submit" class="button button1" style="width: 20%"
+                                <div style="margin-top: 10px;"></div>
+                                <button type="submit" class="button button1 submitButton"
                                     [disabled]="addGroupsForm.invalid || selectedFriends.length == 0 || flagMapping == -1">Add
                                     Group</button><br />
                             </div>

@@ -1,1 +1,71 @@
+<!--Amt Modal-->
+<div class="modal fade" id="myAmtReminderModal">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                                <span class="secondaryColor fontBoldSmall">
+                                    <i class="fa fa-bell commonFaFaFeatures" style="font-size: 20px;"
+                                        aria-hidden="true"></i>&nbsp;&nbsp; Reminder
+                                </span><br />
+                                <span class="smallTextColor fontBoldSmall" style="font-size: 14px;">
+                                    <i class="fa fa-refresh commonFaFaFeatures" style="font-size: 20px;"
+                                        aria-hidden="true"></i>&nbsp;&nbsp;
+                                    Your Return's/Reimburse Mapping<br />
+                                </span>
+                                <span class="smallTextColor fontBoldVeryMiniSmall">
+                                    (Among all the groups)
+                                </span>
+                            </div>
+                        </div>
+
+                        <hr style="width: 80%;">
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                                <ul style="list-style-position: inside;">
+                                    <ng-container *ngFor="let item of owedUsersTotalExpense | keyvalue">
+                                        <li>
+                                            <span class="smallTextColor fontCustomSmall">
+                                                {{item.value.youOwe}} owe {{item.value.oweYou}}
+                                                <span
+                                                    [ngClass]="item.value.sign == 'negative' ? 'negValue' : 'posValue'">
+                                                    <i style="font-size: 12px;"
+                                                        class="fa fa-rupee commonSmallFaFaFeatures"
+                                                        aria-hidden="true"></i> {{item.value.finalAmount}}</span>
+                                            </span>
+                                        </li>
+                                    </ng-container>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <hr style="width: 80%;">
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                                <button type="button" class="btn btn-secondary secondarybackgroundColor"
+                                    data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal footer -->
+
+    </div>
+</div>
+<!---->
 <router-outlet></router-outlet>
